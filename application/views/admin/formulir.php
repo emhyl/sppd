@@ -70,100 +70,80 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="title text-center ">
+                <h5 class="title text-center p-3 ">
                   FORMULIR ISIAN LAPORAN PERJALANAN DINAS LUAR DAERAH DALAM PROVINSI
                 </h5>
               </div>
               <div class="card-body">
-                <form>
+                <form action="<?=base_url('formulir/save')?>" method="POST">
 
                   <div class="row">
-                    <div class="col pr-1">
-                      <div class="form-group">
-                      <label>Kepala Dinas</label>
-                      <select class="form-group p-2 rounded border" aria-label="Default select example">
-                        <option selected>Pilih Kepala Dinas</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                      </div>
-                    </div>
-                    <div class="col pl-1">
-                      <div class="form-group">
-                      <label>An. Kepala Dinas</label>
-                      <select class="form-group p-2 rounded border" aria-label="Default select example">
-                        <option selected>Pilih Kepala Dinas</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                      </div>
-                    </div>
-                    <div class="col pl-1">
-                      <div class="form-group">
-                      <label>An. Kepala Dinas</label>
-                      <select class="form-group p-2 rounded border" aria-label="Default select example">
-                        <option selected>Pilih Kepala Dinas</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                      </div>
-                    </div>
-                    <div class="col pl-1">
-                      <div class="form-group">
-                        <label>Kode Kegiatan*</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                      </div>
-                    </div>
-                    <div class="col pl-1">
-                      <div class="form-group">
-                        <label>Bendahara</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                      </div>
-                    </div>
+                  
+                    <?= $input_baris_1 ?>
 
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                      </div>
+
+                  <div class="border shadow-sm p-2 rounded">
+                    <div class="row">
+                    
+                      <?= $input_baris_2 ?>
+  
+                    </div>
+                    <div class="row">
+                    
+                      <?= $input_baris_2_1 ?>
+  
                     </div>
                   </div>
-                  <div class="row">
-
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label>City</label>
-                        <input type="text" class="form-control" placeholder="City" value="Mike">
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Country</label>
-                        <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Country</label>
-                        <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                      </div>
-                    </div> 
-
+                  
+                  <div class="border shadow-sm p-2 rounded mt-3">
+                     <?= $input_baris_3 ?>
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>About Me</label>
-                        <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+
+                  <div  class="border shadow-sm p-2 rounded mt-3">
+                    <div class="row">
+                      <?= $input_baris_4 ?>
+                    </div>
+                    <?= $input_baris_4_1 ?>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col">
+                      <h6 class="title text-center p-2 bg-dark text-light">
+                        KWITANSI
+                      </h6>
+                    </div>
+                  </div>
+                  
+                  <div class="border shadow-sm p-2 rounded ">
+                     <?= $input_baris_5 ?>
+                  </div>
+
+                  <div  class="border shadow-sm p-2 rounded mt-3">
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="title text-center p-2 bg-dark text-light">
+                          PEGAWAI YANG DITUGASKAN
+                        </h6>
                       </div>
+                    </div>
+                    <div class="row">
+                      <?= $input_baris_6 ?>
+                    </div>
+                    <div class="row">
+                      <?= $input_baris_6_1 ?>
                     </div>
                   </div>
 
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button type="submit" class="btn btn-warning  btn-block" onclick="nowuiDashboard.showNotification('top','left')">Save</button>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="submit" class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('top','left')">Data SPPB</button>
+                    </div>
+                  </div>
+                  
                 </form>
               </div>
             </div>
@@ -171,3 +151,43 @@
           
         </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+      
+      <script>
+              
+        $(document).ready(function(){
+
+           $("select#nama_kegiatan").change(function(){
+            let nilai = this.value;
+            $("input#kode_kegiatan").val(nilai);
+            //  console.log(nilai);
+           })
+
+        
+           $("select#nama").change(function(){
+              let nilai = this.value;
+              //  alert(nilai);
+              $.get('<?= base_url("formulir/get_data_pegawai/")?>'+nilai, function(respon){
+                let data = JSON.parse(respon);
+                $("input#nip").val(data.nip);
+                $("input#pangkat").val(data.pangkat);
+                $("input#jabatan").val(data.jabatan);
+                // console.log();
+
+              });
+           })
+
+           $("select#kecematan").change(function(){
+              let nilai = this.value;
+              $.get('<?= base_url("formulir/get_sbu/")?>'+nilai, function(respon){
+                let data = JSON.parse(respon);
+                let hari = $("input#lama_perjalanan").val();
+                let biaya = (data.uang_harian * hari) + parseInt(data.transport);
+                $("input#biaya").val('Rp '+biaya);
+                // console.log(data.biaya * hari);
+
+              });
+           })
+         
+        });
+      </script>

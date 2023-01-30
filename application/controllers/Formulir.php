@@ -18,6 +18,10 @@ class Formulir extends CI_Controller {
 	public function __construct()
 	{
 		Parent::__construct();
+
+		if(!$this->session->userdata('admin')){
+			redirect(base_url('Login'));
+		}
 		$this->data_formulir = $this->M_DB->getField('tb_formulir');
 		$this->item_pegawai =  $this->M_DB->getAll('tb_pegawai');
 		$this->item_kegiatan =  $this->M_DB->getAll('tb_kegiatan');
@@ -183,7 +187,7 @@ class Formulir extends CI_Controller {
 				'typ' => 'text',
 				'type' => 'number',
 				'enable' => true,
-				'value' => '2 hari',
+				'value' => '1',
 				'name' => 'lama_perjalanan'
 			],
 			[
@@ -213,7 +217,7 @@ class Formulir extends CI_Controller {
 			[
 				'label' => 'Tgl. Laporan',
 				'typ' => 'text',
-				'type' => 'input',
+				'type' => 'date',
 				'enable' => true,
 				'value' => '2020-08-09',
 				'name' => 'tgl_laporan'
@@ -223,7 +227,7 @@ class Formulir extends CI_Controller {
 				'typ' => 'text',
 				'type' => 'input',
 				'enable' => true,
-				'value' => '',
+				'value' => '00',
 				'name' => 'no_surat_tugas_driver'
 			]
 		];
@@ -310,6 +314,14 @@ class Formulir extends CI_Controller {
 				'enable' => false,
 				'value' => '',
 				'name' => 'biaya'
+			],
+			[
+				'label' => 'Terbilang',
+				'typ' => 'text',
+				'type' => 'input',
+				'enable' => true,
+				'value' => '',
+				'name' => 'terbilang'
 			]
 		];
 
@@ -423,7 +435,7 @@ class Formulir extends CI_Controller {
 			'pptk' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['pptk']])->nm_pegawai,
 			'nama_kegiatan' => $this->M_DB->getWhere('tb_kegiatan',['kd_kegiatan'=>$dt_post['nama_kegiatan']])->nm_kegiatan,
 			'kode_kegiatan' => $dt_post['kode_kegiatan'],
-			'bendahara' => $dt_post['bendahara'],
+			'bendahara' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['bendahara']])->nm_pegawai,
 			'no_surat_tugas_kepala_dinas' => $dt_post['no_surat_tugas_kepala_dinas'],
 			'no_surat_tugas_umum' => $dt_post['no_surat_tugas_umum'],
 			'no_sppd' => $dt_post['no_sppd'],
@@ -442,14 +454,18 @@ class Formulir extends CI_Controller {
 			'hasil_perjalanan_dinas' => $dt_post['hasil_perjalanan_dinas'],
 			'kesimpulan' => $dt_post['kesimpulan'],
 			'keperluan_bayar_kwitansi' => $dt_post['keperluan_bayar_kwitansi'],
-			'nama' => $dt_post['nama'],
+			'nama' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['nama']])->nm_pegawai,
 			'nip' => $dt_post['nip'],
 			'pangkat' => $dt_post['pangkat'],
 			'jabatan' => $dt_post['jabatan'],
 			'id_kecematan' => $dt_post['kecematan'],
+			'terbilang' => $dt_post['terbilang'],
 		];
 
+		// var_dump($data);die();
+
 		$this->M_DB->add('tb_formulir',$data);
+		redirect(base_url('sppd'));
 	}
 	
 	public function get_data_pegawai($key = null)

@@ -337,7 +337,7 @@ class Formulir extends CI_Controller {
 		$data['input_baris_6'] = $this->input_sbaris_1($label_baris6);
 		$data['input_baris_6_1'] = $this->input_sbaris_1($label_baris6_1);
 
-		$this->load->view('tmpl/header');
+		$this->load->view('tmpl/header',['admin'=>$this->session->userdata('admin')['data']]);
 		$this->load->view('tmpl/sidebar');
 		$this->load->view('admin/formulir',$data);
 		$this->load->view('tmpl/footer');
@@ -433,9 +433,11 @@ class Formulir extends CI_Controller {
 			'kepala_dinas' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['kepala_dinas']])->nm_pegawai,
 			'sekertaris' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['sekertaris']])->nm_pegawai,
 			'pptk' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['pptk']])->nm_pegawai,
+			'nip_pptk' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['pptk']])->nip,
 			'nama_kegiatan' => $this->M_DB->getWhere('tb_kegiatan',['kd_kegiatan'=>$dt_post['nama_kegiatan']])->nm_kegiatan,
 			'kode_kegiatan' => $dt_post['kode_kegiatan'],
 			'bendahara' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['bendahara']])->nm_pegawai,
+			'nip_bendahara' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['bendahara']])->nip,
 			'no_surat_tugas_kepala_dinas' => $dt_post['no_surat_tugas_kepala_dinas'],
 			'no_surat_tugas_umum' => $dt_post['no_surat_tugas_umum'],
 			'no_sppd' => $dt_post['no_sppd'],

@@ -16,10 +16,8 @@ class Admin extends CI_Controller {
 	
 	public function index()
 	{
-
-
 		$this->load->view('tmpl/header');
-		$this->load->view('tmpl/sidebar');
+		$this->load->view('tmpl/sidebar',['admin'=>$this->session->userdata('admin')['data']]);
 		$this->load->view('admin/admin');
 		$this->load->view('tmpl/footer');
 	}

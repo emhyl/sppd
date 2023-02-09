@@ -16,6 +16,7 @@
               <p>Dashboard</p>
             </a>
           </li>
+          <?php if($this->session->userdata('admin')['data']->bidang == "staf"){ ?>
           <li>
             <a href="<?= base_url('admin') ?>">
               <i class="now-ui-icons education_atom"></i>
@@ -58,6 +59,15 @@
               <p>SPPD</p>
             </a>
           </li>
+          <?php }else{?>
+            <li>
+            <a href="<?= base_url('sppd') ?>">
+              <i class="now-ui-icons education_atom"></i>
+              <p>SPPD</p>
+            </a>
+          </li>
+          <?php }?>
+
         </ul>
       </div>
     </div>

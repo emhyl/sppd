@@ -20,7 +20,7 @@ class Data_Sbu extends CI_Controller {
 		$data['field'] = $this->M_DB->getField('tb_sbu');
 		$data['data_sbu'] = $this->M_DB->getAll('tb_sbu');
 		// var_dump($data);die();
-		$this->load->view('tmpl/header');
+		$this->load->view('tmpl/header',['admin'=>$this->session->userdata('admin')['data']]);
 		$this->load->view('tmpl/sidebar');
 		$this->load->view('admin/data_sbu',$data);
 		$this->load->view('tmpl/footer');

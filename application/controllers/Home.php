@@ -17,12 +17,11 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data['admin'] = $this->session->userdata('admin')['data'];
 		
 
-		$this->load->view('tmpl/header');
+		$this->load->view('tmpl/header',['admin'=>$this->session->userdata('admin')['data']]);
 		$this->load->view('tmpl/sidebar');
-		$this->load->view('admin/dashboard', $data);
+		$this->load->view('admin/dashboard');
 		$this->load->view('tmpl/footer');
 	}
 	

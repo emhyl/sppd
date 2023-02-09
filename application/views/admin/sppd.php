@@ -10,7 +10,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Surat Perintah Perjalanan Dinas</a>
+            <a class="navbar-brand" href="#pablo">SPPD</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -29,35 +29,21 @@
               </div>
             </form>
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons media-2_sound-wave"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
+              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons location_world"></i>
+                  <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#"><?= $admin->username ?></a>
+                  <a class="dropdown-item" href="#"><?= $admin->bidang ?></a>
+                  <a class="dropdown-item text-danger" href="<?= base_url('login') ?>">Keluar</a>
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -72,9 +58,13 @@
             <div class="card">
               <div class="card-header d-flex justify-content-between px-4">
                 <h4 class="card-title"> Data SPPD</h4>
-                <a href="<?= base_url('sppd/r_surat_tugas') ?>" class="btn btn-primary btn-sm pt-2">Surat Tugas</a>
+                <?php if(count($sppd)>0){ ?>
+                  <a href="<?= base_url('sppd/r_surat_tugas/'.$sppd[0]['tempat_tujuan']) ?>" class="btn btn-primary btn-sm pt-2">Surat Tugas</a>
+
+                <?php }?>
               </div>
               <div class="card-body">
+                <?php if(count($sppd)>=0){ ?>
                 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                   <?php foreach($sppd as $data): ?>
@@ -84,9 +74,47 @@
                       <div class="card-body">
                         <h5 class="card-title"><?= $data['nm_pegawai'] ?></h5>
                         <p class="card-text"><?= $data['nama_kegiatan'] ?></p>
-                        <span class="badge bg-primary p-2"><a class="text-white" href="<?= base_url('home/report/'.$data['id']) ?>">Report</a></span>
-                        <span class="badge bg-success p-2"><a class="text-white" href="">Edit</a></span>
-                        <span class="badge bg-danger p-2"><a class="text-white" onclick="return(confirm('Hapus ?'))" href="<?= base_url('sppd/hapus/'.$data['id']) ?>">Hapus</a></span>
+                        <p class="card-text">Tanggal (<?= $data['tgl_surat_tugas'] ?>)</p>
+                        <?php if($this->session->userdata('admin')['data']->bidang == "staf"){?>
+                          <span class="badge bg-primary p-2"><a class="text-white" href="<?= base_url('home/report/'.$data['id']) ?>">Report</a></span>
+                        <!-- <span class="badge bg-success p-2"><a class="text-white" href="">Edit</a></span> -->
+                        <span class="badge bg-warning p-2"><a class="text-white" onclick="return(confirm('Pindahkan Ke riwayat ?'))" href="<?= base_url('sppd/riwayatkan/'.$data['id'].'/'.$data['tempat_tujuan'].'/'.$data['tgl_berangkat']) ?>">Riwayatkan</a></span>
+                        <?php }else{?>
+                          <span class="badge bg-primary p-2"><a class="text-white" href="<?= base_url('home/report/'.$data['id']) ?>">Report</a></span>
+                        <?php }?>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <?php endforeach; ?>
+                <?php }?>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> Riwayat SPPD</h4>
+              </div>
+              <div class="card-body">
+                
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <?php foreach($riwayat as $data_r): ?>
+                  <div class="col">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                      <!-- <div class="card-header">s</div> -->
+                      <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">SPPD (<?= $data_r['tujuan'] ?>) </p>
+                        <p class="card-text">Tanggal (<?= $data_r['tgl'] ?>) </p>
+                        <span class="badge bg-success p-2"><a class="text-white" href="<?= base_url('sppd/r_surat_tugas/'.$data_r['tujuan']) ?>">Surat Tugas</a></span>
+                        <span class="badge bg-danger p-2"><a class="text-white" onclick="return(confirm('Pindahkan Ke riwayat ?'))" href="<?= base_url('sppd/hapus/'.$data_r['tujuan']) ?>">Hapus</a></span>
                       </div>
                     </div>
                   </div>

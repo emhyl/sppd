@@ -22,7 +22,7 @@ class Data_Pegawai extends CI_Controller {
 		$data['data_pegawai'] = $this->M_DB->getAll('tb_pegawai');
 		// var_dump($data);die();
 
-		$this->load->view('tmpl/header');
+		$this->load->view('tmpl/header',['admin'=>$this->session->userdata('admin')['data']]);
 		$this->load->view('tmpl/sidebar');
 		$this->load->view('admin/data_pegawai',$data);
 		$this->load->view('tmpl/footer');

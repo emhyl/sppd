@@ -127,7 +127,7 @@
         </table>
         <br>
 
-        <table style="width: 100%">
+        <table style="width: 100%" border="0">
             <tr>
                 <th>PPTK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                 <th>Bendahara Pengeluaran&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -139,14 +139,14 @@
                 <td></td>
             </tr>
             <tr>
-                <th align="left"> &nbsp; &nbsp; &nbsp; &nbsp;<u><?= $data['pptk'] ?></u></th>
-                <th align="left"> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<u><?= $data['bendahara'] ?></u></th>
-                <th align="left"> &nbsp; &nbsp; &nbsp; &nbsp;<u><?= $data['kepala_dinas'] ?></u></th>
+                <th align="left"><u><?= $data['pptk'] ?></u></th>
+                <th align="left"><u><?= $data['bendahara'] ?></u></th>
+                <th align="left"><u><?= $data['nama'] ?></u></th>
             </tr>
             <tr>
-                <td> &nbsp; &nbsp; &nbsp; &nbsp;xxx</td>
-                <td>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;xxx</td>
-                <td>&nbsp; &nbsp; &nbsp; &nbsp;xxx</td>
+                <td align="left">Nip.<?= $data['nip_pptk'] ?></td>
+                <td align="left">Nip.<?= $data['nip_bendahara'] ?></td>
+                <td align="left">Nip.<?= $data['nip'] ?></td>
             </tr>
             <tr>
                 <td colspan="3" align="center">
@@ -161,9 +161,9 @@
                 <td colspan="3" align="center">
                     <div style="text-align: left;display: inline-block">
                         <br><br><br><br>
-                        <u><b>Mengetahui / Menyetujui</b></u><br>
-                        Pangkat : xxx <br>
-                        NIP : xxxxx
+                        <u><b>Drs. Muhammad Daud Kahal,.M.Si</b></u><br>
+                        Pangkat : Pembina Utama Muda <br>
+                        NIP : 19680105 199703 1 011
                     </div>
                 </td>
             </tr>
@@ -386,7 +386,7 @@
         </tr>
     </table>
     <br>
-    <div style="display: inline-block;margin-left:60% ">
+    <div style="display: inline-block;margin-left:50% ">
         <table>
             <tr>
                 <td>Dikeluarkan Di</td>
@@ -404,16 +404,16 @@
             <tr>
                 <td>Kepala Dinas</td>
                 <td>:</td>
-                <td>......../Dispar.1/II/2021</td>
+                <td><?= $data['no_surat_tugas_kepala_dinas'] ?></td>
             </tr>
             <tr>
-                <td>
+                <td colspan="3">
                     <br><br>
-                    <u><b>xxxxxx</b></u>
+                    <u><b>Drs. Muhammad Daud Kahal,.M.Si</b></u>
                     <br>
-                    Pangkat : xxxx
+                    Pangkat : Pembina Utama Muda
                     <br>
-                    NIP. xxxx
+                    NIP. 19680105 199703 1 011<?= $data['nip'] ?>
                 </td>
             </tr>
         </table>
@@ -506,11 +506,13 @@
         <div style="clear: both"></div>
         <br><br><br><br>
         <div style="float: left">
-            <h4><u>xxxxxxxxxx</u></h4>
-            <p>Pangkat : XXXXXXXXXX</p>
-            <p>NIP. XXXXXXXXXX</p>
+            <h4><u>Drs. Muhammad Daud Kahal,.M.Si</u></h4>
+            <p>Pangkat :  Pembina Utama Muda</p>
+            <p>NIP. 19680105 199703 1 011</p>
         </div>
-        <div  style="float: right;width:287px; red;"><h4><u>XXXXXXX</u></h4>
+        <div  style="float: right;width:287px; red;">
+            <h4><u><?= $data['nama'] ?></u></h4>
+            Nip. <?= $data['nip'] ?>
         </div>
         <div style="clear: both"></div>
     </div>  

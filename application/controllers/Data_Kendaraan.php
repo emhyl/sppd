@@ -23,7 +23,7 @@ class Data_Kendaraan extends CI_Controller {
 		$data['field'] = $this->M_DB->getField('tb_kendaraan');
 		$data['data_kendaraan'] = $this->M_DB->getAll('tb_kendaraan');
 		// var_dump($data);die();
-		$this->load->view('tmpl/header');
+		$this->load->view('tmpl/header',['admin'=>$this->session->userdata('admin')['data']]);
 		$this->load->view('tmpl/sidebar');
 		$this->load->view('admin/data_kendaraan',$data);
 		$this->load->view('tmpl/footer');

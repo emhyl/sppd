@@ -22,7 +22,7 @@ class Data_Kegiatan extends CI_Controller {
 		$data['field'] = $this->M_DB->getField('tb_kegiatan');
 		$data['data_kegiatan'] = $this->M_DB->getAll('tb_kegiatan');
 		// var_dump($data);die();
-		$this->load->view('tmpl/header');
+		$this->load->view('tmpl/header',['admin'=>$this->session->userdata('admin')['data']]);
 		$this->load->view('tmpl/sidebar');
 		$this->load->view('admin/data_kegiatan',$data);
 		$this->load->view('tmpl/footer');

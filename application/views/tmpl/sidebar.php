@@ -5,7 +5,7 @@
       <div class="logo text-center">
      
         <a href="#" class="simple-text logo-normal">
-           SPPD Dinas Pariwisata
+           SPPD Dinas Pariwisata <br> Pemuda & Olahraga
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">

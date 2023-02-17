@@ -18,12 +18,12 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
+            <form action="<?= base_url('sppd/cari') ?>" method="POST">
               <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
+                <input type="date" value="<?= date('Y-m-d') ?>" name="key" class="form-control" placeholder="Search...">
                 <div class="input-group-append">
                   <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                    <button style="background-color: transparent;border: none;"><i class="now-ui-icons ui-1_zoom-bold"></i></button>
                   </div>
                 </div>
               </div>
@@ -59,38 +59,53 @@
               <div class="card-header d-flex justify-content-between px-4">
                 <h4 class="card-title"> Data SPPD</h4>
                 <?php if(count($sppd)>0){ ?>
-                  <a href="<?= base_url('sppd/r_surat_tugas/'.$sppd[0]['tempat_tujuan']) ?>" class="btn btn-primary btn-sm pt-2">Surat Tugas</a>
-
+                  <a href="<?= base_url('sppd/r_surat_tugas') ?>" class="btn btn-primary btn-sm pt-2">Surat Tugas</a>
                 <?php }?>
               </div>
               <div class="card-body">
-                <?php if(count($sppd)>=0){ ?>
                 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                  <?php foreach($sppd as $data): ?>
-                  <div class="col">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                      <div class="card-header"><?= $data['pangkat'] ?></div>
-                      <div class="card-body">
-                        <h5 class="card-title"><?= $data['nm_pegawai'] ?></h5>
-                        <p class="card-text"><?= $data['nama_kegiatan'] ?></p>
-                        <p class="card-text">Tanggal (<?= $data['tgl_surat_tugas'] ?>)</p>
-                        <?php if($this->session->userdata('admin')['data']->bidang == "staf"){?>
-                          <span class="badge bg-primary p-2"><a class="text-white" href="<?= base_url('home/report/'.$data['id']) ?>">Report</a></span>
-                        <!-- <span class="badge bg-success p-2"><a class="text-white" href="">Edit</a></span> -->
-                        <span class="badge bg-warning p-2"><a class="text-white" onclick="return(confirm('Pindahkan Ke riwayat ?'))" href="<?= base_url('sppd/riwayatkan/'.$data['id'].'/'.$data['tempat_tujuan'].'/'.$data['tgl_berangkat']) ?>">Riwayatkan</a></span>
-                        <?php }else{?>
-                          <span class="badge bg-primary p-2"><a class="text-white" href="<?= base_url('home/report/'.$data['id']) ?>">Report</a></span>
-                        <?php }?>
-                        
-                      </div>
-                    </div>
-                  </div>
-                  <?php endforeach; ?>
-                <?php }?>
-                </div>
+                <?php if(count($sppd)>0){ ?>
+                  
 
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">No</th>
+                          <th scope="col">Nama</th>
+                          <th scope="col">Tanggal Pergi</th>
+                          <th scope="col">Tangal Pulang</th>
+                          <th scope="col">Report</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach($sppd as $no => $row_sppd): ?>
+                        <tr>
+                          <th scope="row"><?= $no+1 ?></th>
+                          <td><?= $row_sppd['nama'] ?></td>
+                          <td><?= $row_sppd['tgl_berangkat'] ?></td>
+                          <td><?= $row_sppd['tgl_kembali'] ?></td>
+                          <td><a href="<?= base_url('home/report/'.$row_sppd['id']) ?>"><span class="badge bg-warning p-2 text-dark">Report</span></a></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+
+                
+                <?php }else{?>
+                  <div class="alert alert-warning text-dark" role="alert">
+                    Belum Ada SPPD !
+                  </div>
+                <?php } ?>
+                <?php if(count($sppd)>0){ ?>
+                  <?php if(($this->session->userdata('admin')['data']->bidang == 'staf')){ ?>
+                  <a href="<?= base_url('sppd/riwayatkan') ?>" class="btn btn-primary btn-sm pt-2">Arsipkan</a>
+                  <?php } ?>
+
+
+                <?php } ?>
               </div>
+
             </div>
           </div>
           
@@ -101,26 +116,37 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title"> Riwayat SPPD</h4>
+                <a href="<?= base_url('sppd/laporan') ?>" class="btn btn-primary btn-sm pt-2">Laporan</a>
               </div>
               <div class="card-body">
                 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                  <?php foreach($riwayat as $data_r): ?>
-                  <div class="col">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                      <!-- <div class="card-header">s</div> -->
-                      <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">SPPD (<?= $data_r['tujuan'] ?>) </p>
-                        <p class="card-text">Tanggal (<?= $data_r['tgl'] ?>) </p>
-                        <span class="badge bg-success p-2"><a class="text-white" href="<?= base_url('sppd/r_surat_tugas/'.$data_r['tujuan']) ?>">Surat Tugas</a></span>
-                        <span class="badge bg-danger p-2"><a class="text-white" onclick="return(confirm('Pindahkan Ke riwayat ?'))" href="<?= base_url('sppd/hapus/'.$data_r['tujuan']) ?>">Hapus</a></span>
-                      </div>
-                    </div>
-                  </div>
-                  <?php endforeach; ?>
-                </div>
 
+                  <?php if(count( $riwayat) >0){ ?>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Tujuan</th>
+                        <th scope="col">Detail</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach($riwayat as $no_r => $data_r): ?>
+                      <tr>
+                        <th scope="row"><?= $no_r+1 ?></th>
+                        <td><?= $data_r['tgl'] ?></td>
+                        <td><?= $data_r['tujuan'] ?></td>
+                        <td><a href="<?= base_url('sppd/detail/'.$data_r['tgl'].'/'.$data_r['tujuan']) ?>"><span class="badge bg-warning p-2 text-dark">Detail</span></a></td>
+                      </tr>
+                      <?php endforeach; ?>
+                    </tbody>
+                  </table>
+                  <?php  }else{ ?>
+                    <div class="alert alert-warning text-dark" role="alert">
+                      Arsip Kosong !
+                    </div>
+                  <?php } ?>
               </div>
             </div>
           </div>

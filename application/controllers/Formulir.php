@@ -195,7 +195,7 @@ class Formulir extends CI_Controller {
 				'typ' => 'text',
 				'type' => 'date',
 				'enable' => true,
-				'value' => '2020-08-09',
+				'value' => date('Y-m-d'),
 				'name' => 'tgl_berangkat'
 			],
 			[
@@ -203,7 +203,7 @@ class Formulir extends CI_Controller {
 				'typ' => 'text',
 				'type' => 'date',
 				'enable' => true,
-				'value' => '2020-08-09',
+				'value' => date('Y-m-d'),
 				'name' => 'tgl_kembali'
 			],
 			[
@@ -211,7 +211,7 @@ class Formulir extends CI_Controller {
 				'typ' => 'text',
 				'type' => 'date',
 				'enable' => true,
-				'value' => '2020-08-09',
+				'value' => date('Y-m-d'),
 				'name' => 'tgl_surat_tugas'
 			],
 			[
@@ -219,7 +219,7 @@ class Formulir extends CI_Controller {
 				'typ' => 'text',
 				'type' => 'date',
 				'enable' => true,
-				'value' => '2020-08-09',
+				'value' => date('Y-m-d'),
 				'name' => 'tgl_laporan'
 			],
 			[
@@ -428,7 +428,7 @@ class Formulir extends CI_Controller {
 	{
 		
 		$dt_post = $this->input->post();
-
+		// var_dump($dt_post);die();
 		$data = [
 			'kepala_dinas' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['kepala_dinas']])->nm_pegawai,
 			'sekertaris' => $this->M_DB->getWhere('tb_pegawai',['id'=>$dt_post['sekertaris']])->nm_pegawai,
@@ -462,6 +462,7 @@ class Formulir extends CI_Controller {
 			'jabatan' => $dt_post['jabatan'],
 			'id_kecematan' => $dt_post['kecematan'],
 			'terbilang' => $dt_post['terbilang'],
+			'status' => 'berlansung'
 		];
 
 		// var_dump($data);die();

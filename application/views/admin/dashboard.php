@@ -50,9 +50,9 @@
           <div class="col-12">
             <div class="card card-chart">
               <div class="card-header">
-                <h4 class="card-title text-center" style="font-size: 35px;font-weight: bold"><marquee behavior="" direction="right">SURAT PERINTAH PERJALANAN DINAS</marquee></h4>
+                <h4 class="card-title text-center" style="font-size: 35px;font-weight: bold"><marquee behavior="" direction="right">SURAT PERINTAH PERJALANAN DINAS </marquee></h4>
                 <div class="text-center">
-                  <h5 class="card-category text-center text-dark shadow-sm d-inline p-3 rounded" style="font-size: 30px; margin: 0 auto; text-shadow: 1px 1px 1px #989"> DINAS PARIWISATA KABUPATEN BULUKUMBA</h5>
+                  <h5 class="card-category text-center text-dark shadow-sm d-inline p-3 rounded" style="font-size: 30px; margin: 0 auto; text-shadow: 1px 1px 1px #989"> DINAS PARIWISATA PEMUDA & OLAHRAGA KABUPATEN BULUKUMBA</h5>
                   <br><br><br>
 
                 </div>

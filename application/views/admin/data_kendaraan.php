@@ -114,7 +114,7 @@
                              <?php endforeach ?> 
                              <td>
                                <span class="badge badge-primary"><a href="" class="text-light p-2" data-toggle="modal" data-target="#m<?=$kendaraan['id'] ?>">Edit</a></span>
-                               <span class="badge badge-danger"><a onclick="" href="<?= base_url('data_Pegawai/hapus/').$kendaraan['id'] ?>" class="text-light">Hapus</a></span>
+                               <span class="badge badge-danger"><a onclick="" href="<?= base_url('data_Kendaraan/hapus/').$kendaraan['id'] ?>" class="text-light">Hapus</a></span>
                              </td>
                              
                             </tr>

@@ -10,12 +10,13 @@
         <div class="logo_kop" style="display: inline;">
             <img width="100" height="100" src="<?=base_url()?>assets/admin/img/logo.jpeg">
         </div>
+        <br>
         <div style="display: inline-block">
             <h5>
                 PEMERINTAH KABUPATEN BULUKUMBA
             </h5>
             <h1>
-                DINAS PARIWISATA
+                DINAS PARIWISATA PEMUDA & OLAHRAGA
             </h1>
             <span>
                 Jl. Lanto Dg. Pasewang No. 31 Bulukumba. Telp/Fax : 0413 - 83700
@@ -45,10 +46,11 @@
         <h4><center>MENUGASKAN</center></h4>
         <br>
         <p>Kepada :</p>
-        <?php foreach($data as $row): ?>
-        <table style="margin-left: 60px">
+        <?php foreach($data as $no => $row): ?>
+        <table style="margin-left: 60px" border="0">
             <tr>
-                <td>Kepada</td>
+                <td valign="top" rowspan="4"><?= $no+1 ?>.&nbsp;&nbsp;&nbsp; </td>
+                <td>Nama</td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td><?= $row['nama'] ?></td>
             </tr>
@@ -88,7 +90,7 @@
         </table>
         <br><br>
 
-        <div style="padding: 0 20px;text-align: right;    ">
+        <div style="padding: 0 20px;text-align: right; position: absolute;bottom: 20; right: 20">
             <div style="display:inline-block;">
                 <table border="0">
                     <tr>
@@ -115,7 +117,7 @@
                 </table>
             </div>
         </div>
-        <div >
+        <div style="position: absolute;bottom: 20;left: 20">
             <p>Tebusan :</p>
             <br>
             <table style="box-sizing:border-box;padding-left:50px;">

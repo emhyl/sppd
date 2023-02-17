@@ -9,13 +9,13 @@
     <div class="header">
         <div class="logo_kop" style="display: inline;">
             <img width="100" height="100" src="<?=base_url()?>assets/admin/img/logo.jpeg">
-        </div>
+        </div><br>
         <div style="display: inline-block">
             <h5>
                 PEMERINTAH KABUPATEN BULUKUMBA
             </h5>
             <h1>
-                DINAS PARIWISATA
+                DINAS PARIWISATA PEMUDA & OLAHRAGA
             </h1>
             <span>
                 Jl. Lanto Dg. Pasewang No. 31 Bulukumba. Telp/Fax : 0413 - 83700
@@ -53,7 +53,7 @@
             <tr>
                 <td>Sudah Terima </td>
                 <td>:</td>
-                <td>Bendahara Pengeluaran DINAS PARIWISATA</td>
+                <td>Bendahara Pengeluaran DINAS PARIWISATA PEMUDA & OLAHRAGA</td>
             </tr>
             <tr>
                 <td>Terbilang </td>
@@ -178,14 +178,14 @@
     <div class="header">
         <div class="logo_kop" style="display: inline;">
             <img width="100" height="100" src="<?=base_url()?>assets/admin/img/logo.jpeg">
-        </div>
+        </div><br>
         <div style="display: inline-block">
-            <br><br>
+            <!-- <br><br> -->
             <h5>
                 PEMERINTAH KABUPATEN BULUKUMBA
             </h5>
             <h1>
-                DINAS PARIWISATA
+                DINAS PARIWISATA PEMUDA & OLAHRAGA
             </h1>
             <span>
                 Jl. Lanto Dg. Pasewang No. 31 Bulukumba. Telp/Fax : 0413 - 83700
@@ -225,7 +225,7 @@
             <td>1.</td>
             <td>Yang Memerintah</td>
             <td>:</td>
-            <td>KEPALA DINAS PARIWISATA KABUPATEN BULUKUMBA</td>
+            <td>KEPALA DINAS PARIWISATA PEMUDA & OLAHRAGA KABUPATEN BULUKUMBA</td>
         </tr>
         <tr>
             <td>2.</td>
@@ -368,7 +368,7 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td>DINAS PARIWISATA</td>
+                        <td>DINAS PARIWISATA PEMUDA & OLAHRAGA</td>
                     </tr>
                     <tr>
                         <td><?= $data['mata_anggaran'] ?></td>
@@ -413,7 +413,7 @@
                     <br>
                     Pangkat : Pembina Utama Muda
                     <br>
-                    NIP. 19680105 199703 1 011<?= $data['nip'] ?>
+                    NIP. 19680105 199703 1 011
                 </td>
             </tr>
         </table>

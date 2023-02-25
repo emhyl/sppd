@@ -48,6 +48,7 @@ class Sppd extends CI_Controller {
 		// $data['riwayat'] = $this->M_DB->getAll('tb_riwayat');
 		$tgl = [];
 		$tujuan = [];
+		$data['riwayat'] = [];
 		foreach($this->M_DB->getAll('tb_riwayat') as $rowRiwayat){
 			if( (!in_array($rowRiwayat['tgl'],$tgl)) || (!in_array($rowRiwayat['tujuan'],$tujuan))  ){
 

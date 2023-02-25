@@ -402,9 +402,8 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Kepala Dinas</td>
-                <td>:</td>
-                <td><?= $data['no_surat_tugas_kepala_dinas'] ?></td>
+                <td> <b> Kepala Dinas</b></td>
+                
             </tr>
             <tr>
                 <td colspan="3">

@@ -20,7 +20,7 @@
           <li>
             <a href="<?= base_url('admin') ?>">
               <i class="now-ui-icons education_atom"></i>
-              <p> Admin</p>
+              <p>Data User</p>
             </a>
           </li>
           <li>
